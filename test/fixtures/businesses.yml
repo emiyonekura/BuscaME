@@ -1,11 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  description: MyString
-  email: MyString
+  name: Panes Juanita
+  description: Panadería gourmet
+  email: juanita@panaderia.cl
+  user: two
 
 two:
-  name: MyString
-  description: MyString
-  email: MyString
+  name: Birdy
+  description: Bolsos y carteras
+  email: ventas@birdy.cl
+  user: three

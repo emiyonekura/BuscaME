@@ -18,9 +18,9 @@
         <td><%= business.name %></td>
         <td><%= business.description %></td>
         <td><%= business.email %></td>
-        <td><%= link_to 'Show', business %></td>
-        <td><%= link_to 'Edit', edit_business_path(business) %></td>
-        <td><%= link_to 'Destroy', business, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Ver más', business %></td>
+        <td><%= link_to 'Editar', edit_business_path(business) if can? :update, business %></td>
+        <td><%= link_to 'Eliminar', business if can? :delete, business, method: :delete, data: { confirm: 'El Negocio será eliminado' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Business', new_business_path %>
+<%= link_to 'Nuevo Negocio', new_business_path if can? :create, Business %>

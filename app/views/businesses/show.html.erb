@@ -15,5 +15,5 @@
   <%= @business.email %>
 </p>
 
-<%= link_to 'Edit', edit_business_path(@business) %> |
-<%= link_to 'Back', businesses_path %>
+<%= link_to 'Editar', edit_business_path(@business) if can? :update, @business %> |
+<%= link_to 'Volver', businesses_path %>
