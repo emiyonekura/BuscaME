@@ -2,4 +2,6 @@ class Business < ApplicationRecord
 	belongs_to :user
 	validates :name, :user_id, presence: :true
 	has_many :products
+
+	mount_uploader :logo, LogoUploader
 end

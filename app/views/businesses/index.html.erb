@@ -18,6 +18,7 @@
         <td><%= business.name %></td>
         <td><%= business.description %></td>
         <td><%= business.email %></td>
+        <td><%= image_tag business.logo.thumb %></td>
         <td><%= link_to 'Ver más', business %></td>
         <td><%= link_to 'Editar', edit_business_path(business) if can? :update, business %></td>
         <td><%= link_to 'Eliminar', business if can? :delete, business, method: :delete, data: { confirm: 'El Negocio será eliminado' } %></td>

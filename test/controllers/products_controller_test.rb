@@ -1,6 +1,7 @@
 #require 'test_helper'
 
 #class ProductsControllerTest < ActionDispatch::IntegrationTest
+#include Devise::TestHelpers
 #  setup do
  #   @product = products(:one)
   #end

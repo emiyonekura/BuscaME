@@ -1,6 +1,7 @@
 #require 'test_helper'
 
 #class BusinessesControllerTest < ActionDispatch::IntegrationTest
+#include Devise::TestHelpers
 #  setup do
 #    @business = businesses(:one)
 #  end

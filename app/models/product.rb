@@ -5,4 +5,7 @@ class Product < ApplicationRecord
 
   scope :highlighted, -> {where(highlighted: true)}
 
+  mount_uploader :photo, PhotoUploader
+
+
 end
