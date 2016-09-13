@@ -83,5 +83,5 @@ test:
 production:
   <<: *default
   database: BME_production
-  username: BME
+  username: ubuntu
   password: <%= ENV['BME_DATABASE_PASSWORD'] %>
