@@ -15,8 +15,8 @@ u2 = User.create!(name: "owner2", email: "owner2@mail.com", role: 1, id: 2, pass
 u3 = User.create!(name: "Admin", email: "admin@mail.cl", role: 2, id: 3, password: "admin123")
 u4 = User.create!(name: "Member", email: "member@mail.cl", role: 0, id: 4, password: "member111")
 
-Business.create!(name: Faker::Company.name, id: 1, description: Faker::Company.catch_phrase, email: Faker::Internet.email, user_id: 2)
-Business.create!(name: Faker::Company.name, id: 2, description: Faker::Company.catch_phrase, email: Faker::Internet.email, user_id: 1)
+Business.create!(name: Faker::Company.name, id: 1, description: Faker::Company.catch_phrase, email: Faker::Internet.email, user_id: 2, address:"Manuel Montt 1170, Providencia, Santiago, Chile")
+Business.create!(name: Faker::Company.name, id: 2, description: Faker::Company.catch_phrase, email: Faker::Internet.email, user_id: 1, address: "Alameda 1500, Santiago, Santiago, Chile")
 
 c1 = Category.create!(name: "Artesanía")
 c2 = Category.create!(name: "Pastelería")
