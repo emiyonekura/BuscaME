@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
+
 	get 'businesses/index'
+	get 'pages/set_address'
 
   resources :products
   resources :businesses

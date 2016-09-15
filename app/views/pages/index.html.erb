@@ -1,0 +1,26 @@
+<div id="demo"> </div>
+
+<button onClick="getLocation()"> Obtener posición </button>
+
+<script>
+var x = document.getElementById("demo");
+var url = "<%= pages_get_address_path %>"
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+function showPosition(position) {
+    x.innerHTML = "Latitude: " + position.coords.latitude +
+    "<br>Longitude: " + position.coords.longitude;
+    url = url + "?lat=" + position.coords.latitude + "&lon=" + position.coords.longitude
+
+    $.ajax({
+    	url: url,
+    	type: 'GET',
+    	dataType: 'script'
+    })
+}
+</script>

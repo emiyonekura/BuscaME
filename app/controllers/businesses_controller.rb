@@ -5,11 +5,16 @@ class BusinessesController < ApplicationController
   # GET /businesses.json
   def index
     @businesses = Business.all
+    @markers = Gmaps4rails.build_markers(@businesses) do|business, marker|
+        marker.lat business.latitude
+        marker.lng business.longitude
+      end
   end
 
   # GET /businesses/1
   # GET /businesses/1.json
   def show
+    @businesses_near = @business.nearbys(5)
   end
 
   # GET /businesses/new
@@ -69,6 +74,6 @@ class BusinessesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def business_params
-      params.require(:business).permit(:name, :description, :email, :user_id, :logo, :logo_cache)
+      params.require(:business).permit(:name, :description, :email, :user_id, :logo, :logo_cache, :latitude, :longitude, :address)
     end
 end

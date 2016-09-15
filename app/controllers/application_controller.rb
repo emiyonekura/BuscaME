@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
     @cats = Category.all
   end
 
+
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to products_path, alert: "No tienes acceso a esta página"
   end
