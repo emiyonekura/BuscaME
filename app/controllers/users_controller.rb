@@ -7,6 +7,12 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def get_address
+    @lat = params[:lat]
+    @lon = params[:lon]
+    @address = Geocoder.address([@lat, @lon])
+  end
+
   # GET /users/1
   # GET /users/1.json
   def show
@@ -69,6 +75,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :email, :role, :profile, :profile_cache)
+      params.require(:user).permit(:name, :email, :role, :profile, :profile_cache, :latitude, :longitude, :address)
     end
 end
