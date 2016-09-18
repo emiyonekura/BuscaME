@@ -1,6 +1,6 @@
-#require 'test_helper'
+require 'test_helper'
 
-#class BusinessesControllerTest < ActionDispatch::IntegrationTest
+class BusinessesControllerTest < ActionDispatch::IntegrationTest
 #include Devise::TestHelpers
 #  setup do
 #    @business = businesses(:one)
@@ -46,4 +46,4 @@
 
 #    assert_redirected_to businesses_url
 #  end
-#end
+end

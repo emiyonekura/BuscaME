@@ -4,6 +4,7 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
+  #  @businesses = Business.all
     @products = Product.highlighted if params[:q].blank?
     @products = Product.where("name ILIKE ? OR description ILIKE ?", "%#{params[:q]}%", "%#{params[:q]}%") if params[:q].present?    
   end
@@ -15,7 +16,8 @@ class ProductsController < ApplicationController
 
   # GET /products/new
   def new
-    @product = Product.new
+    @business = Business.find(params[:business_id])
+    @product = @business.products.build(product_params)
   end
 
   # GET /products/1/edit
@@ -25,7 +27,8 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
-    @product = Product.new(product_params)
+    @business = Business.find(params[:business_id])
+    @product = @business.product.build(product_params)
 
     respond_to do |format|
       if @product.save
@@ -65,11 +68,12 @@ class ProductsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
+      @business = Business.find(params[:business_id])
       @product = Product.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :description, :price, :business_id, :business.user_id, :q, :photo, :photo_cache)
+      params.require(:product).permit(:name, :description, :price, :business_id, :business.user_id, :category_id, :q, :photo, :photo_cache)
     end
 end

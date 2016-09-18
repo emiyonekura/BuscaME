@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
 
-  resources :products
-  resources :businesses
+  resources :businesses do
+    resources :products, except: [:index] 
+  end
 
-	get 'businesses/index'
+	get 'products/index'
 	get 'pages/set_address'
   get 'get_address', to: "users#get_address"
 

@@ -1,7 +1,8 @@
 class Product < ApplicationRecord
   belongs_to :business
-  validates :name, :business_id, presence: :true
   belongs_to :category
+  validates :name, :business_id, :category_id, presence: :true
+  
 
   scope :highlighted, -> {where(highlighted: true)}
 

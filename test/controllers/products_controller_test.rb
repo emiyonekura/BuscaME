@@ -1,6 +1,6 @@
-#require 'test_helper'
+require 'test_helper'
 
-#class ProductsControllerTest < ActionDispatch::IntegrationTest
+class ProductsControllerTest < ActionDispatch::IntegrationTest
 #include Devise::TestHelpers
 #  setup do
  #   @product = products(:one)
@@ -46,4 +46,4 @@
 
    # assert_redirected_to products_url
   #end
-#end
+end

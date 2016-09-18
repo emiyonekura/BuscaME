@@ -1,23 +1,13 @@
 <p id="notice"><%= notice %></p>
-
+<div class="container">
 <h1>Products</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Price</th>
-      <th>Business</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-  
-  <tbody id="products-content">
-    <%= render @products %>
-  </tbody>
+<table>  
+    <tbody id="products-content">
+      <%= render @products %>
+    </tbody>
 </table>
 
 <br>
 
-<%= link_to 'Nuevo Producto', new_product_path if can? :create, Product %>
+<%= link_to 'Nuevo Producto', new_product_path if can? :create, @product %>

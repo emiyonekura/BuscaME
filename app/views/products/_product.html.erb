@@ -4,8 +4,8 @@
         <td><%= product.price %></td>
         <td><%= product.business.name %></td>
         <td><%= image_tag product.photo.thumb %></td>
-        <td><%= link_to 'Ver más', product %></td>
-        <td><%= link_to 'Editar', edit_product_path(product) if can? :update, product %></td>
-        <td><%= link_to 'Eliminar', product if can? :delete, product, method: :delete, data: { confirm: 'El Producto será eliminado' } %></td>
+        <td><%= link_to 'Ver más', business_product_path('business_id', 'id'), :class => 'btn' %></td> 
+        <td><%= link_to 'Editar', edit_business_product_path(product) if can? :update, @product, :class => 'btn' %></td>
+        <td><%= link_to 'Eliminar', product if can? :delete, @product, method: :delete, data: { confirm: 'El Producto será eliminado' }, :class => 'btn' %></td>
 </tr>
     

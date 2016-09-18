@@ -18,6 +18,11 @@ class ProductTest < ActiveSupport::TestCase
   	assert_not @product.valid?
   end
 
+  test "Product must belong to a category" do
+    @product.category = nil
+    assert_not @product.valid?
+  end
+
   test "Scope only highlighted products true" do
   	values = Product.highlighted.collect(&:highlighted)
   	assert_not_includes(values, false)
