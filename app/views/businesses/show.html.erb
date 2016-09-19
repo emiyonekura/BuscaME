@@ -1,3 +1,4 @@
+<div class="container">
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -15,5 +16,17 @@
   <%= @business.email %>
 </p>
 
-<%= link_to 'Editar', edit_business_path(@business) if can? :update, @business %> |
+<% @products.each do |product| %>
+	<div class="col-md-3">
+    	<div class="thumbnail">
+        	<%= product.name %>
+        	<%= product.description %>
+        	<%= product.price %>
+        	<%= image_tag(product.photo.thumb, :class => 'img-responsive')%>
+    	</div>
+  	</div>
+<% end %> 
+
+<%= link_to 'Editar', edit_business_path(@business) if can? :update, @business %>
 <%= link_to 'Volver', businesses_path %>
+</div>

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 	get 'products/index'
 	get 'pages/set_address'
   get 'get_address', to: "users#get_address"
+# get 'products/:business_id'
 
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

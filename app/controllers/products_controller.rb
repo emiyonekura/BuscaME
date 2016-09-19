@@ -1,10 +1,10 @@
 class ProductsController < ApplicationController
+  before_action :set_business, except: [:index]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource
   # GET /products
   # GET /products.json
   def index
-  #  @businesses = Business.all
     @products = Product.highlighted if params[:q].blank?
     @products = Product.where("name ILIKE ? OR description ILIKE ?", "%#{params[:q]}%", "%#{params[:q]}%") if params[:q].present?    
   end
@@ -16,8 +16,7 @@ class ProductsController < ApplicationController
 
   # GET /products/new
   def new
-    @business = Business.find(params[:business_id])
-    @product = @business.products.build(product_params)
+    @product = @product.new
   end
 
   # GET /products/1/edit
@@ -27,8 +26,9 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
-    @business = Business.find(params[:business_id])
-    @product = @business.product.build(product_params)
+        @product = Product.new(product_params)
+        @product.business_id = @business.id 
+     #   @product.business_id = current_user.business_id
 
     respond_to do |format|
       if @product.save
@@ -68,8 +68,11 @@ class ProductsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
-      @business = Business.find(params[:business_id])
       @product = Product.find(params[:id])
+    end
+
+    def set_business
+      @business = Business.find(params[:business_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

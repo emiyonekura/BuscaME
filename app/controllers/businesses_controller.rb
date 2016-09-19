@@ -15,6 +15,7 @@ class BusinessesController < ApplicationController
   # GET /businesses/1.json
   def show
     @businesses_near = @business.nearbys(5)
+    @products = @business.products
   end
 
   # GET /businesses/new
