@@ -21,7 +21,7 @@
           
           <ul class="dropdown-menu">  
           <% @cats.each do |cat| %>        
-            <li><%= cat.name %></li>
+            <li><%= link_to cat.name, products_index_path %></li>
           <% end %>
           </ul>
         </li>

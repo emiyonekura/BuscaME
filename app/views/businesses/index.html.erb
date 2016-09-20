@@ -1,7 +1,7 @@
 <div class="container">
 <p id="notice"><%= notice %></p>
 
-<h1>Businesses</h1>
+<h1>Negocios</h1>
 
 <div style='width: 800px;'>
   <div id="map" style='width: 800px; height: 400px;'></div>
@@ -39,7 +39,18 @@ handler.buildMap({
 
   }
 }, 
-  function(){
-        markers = handler.addMarkers(<%=raw @markers.to_json %>);     
+  
+   function(){
+        markers = handler.addMarkers(<%=raw @markers.to_json %>);
+        handler.bounds.extendWith(markers);
+
+      for (var i = 0; i < markers.length; i++) {
+        link = markers_json[i].link;
+        google.maps.event.addListener(markers[i].getServiceObject(), 'click', function(){
+          window.open(link);
+        })
+      }
+
+      handler.fitMapToBounds();
   });
 </script>

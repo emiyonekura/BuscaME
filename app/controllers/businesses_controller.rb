@@ -8,6 +8,7 @@ class BusinessesController < ApplicationController
     @markers = Gmaps4rails.build_markers(@businesses) do|business, marker|
         marker.lat business.latitude
         marker.lng business.longitude
+        marker.json({ link: business_url(business) })
       end
   end
 
@@ -75,6 +76,6 @@ class BusinessesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def business_params
-      params.require(:business).permit(:name, :description, :email, :user_id, :logo, :logo_cache, :latitude, :longitude, :address)
+      params.require(:business).permit(:name, :description, :email, :user_id, :products, :logo, :logo_cache, :latitude, :longitude, :address)
     end
 end
